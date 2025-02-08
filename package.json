@@ -1,0 +1,23 @@
+{
+  "name": "dify",
+  "version": "1.0.0",
+  "description": "An Electron application to display a web page.",
+  "author": "Your Name",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder"
+  },
+  "devDependencies": {
+    "electron": "^34.1.1",
+    "electron-builder": "^24.3.0"
+  },
+  "build": {
+    "appId": "com.example.dify",
+    "mac": {
+      "target": "dmg",
+      "category": "public.app-category.utilities",
+      "icon": "dify-logo.png"
+    }
+  }
+}

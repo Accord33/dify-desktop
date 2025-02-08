@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Electron App</title>
+  <style>
+    body {
+      margin: 0;
+      padding-top: 30px; /* Added padding to body */
+      -webkit-app-region: drag;
+    }
+    .content {
+      padding-top: 60px; /* Increased padding to avoid overlap */
+    }
+  </style>
+</head>
+<body>
+  <div class="content">
+    <h1>Welcome to Electron</h1>
+  </div>
+  <script>
+    const { remote } = require('electron');
+    window.minimize = () => remote.getCurrentWindow().minimize();
+    window.maximize = () => {
+      const win = remote.getCurrentWindow();
+      if (win.isMaximized()) {
+        win.unmaximize();
+      } else {
+        win.maximize();
+      }
+    };
+    window.close = () => remote.getCurrentWindow().close();
+
+    // Ensure padding is maintained on page navigation
+    const maintainPadding = () => {
+      document.querySelector('.content').style.paddingTop = '60px';
+    };
+
+    window.addEventListener('load', maintainPadding);
+    window.addEventListener('hashchange', maintainPadding);
+    window.addEventListener('popstate', maintainPadding);
+    maintainPadding(); // Ensure padding on initial load
+  </script>
+</body>
+</html>
